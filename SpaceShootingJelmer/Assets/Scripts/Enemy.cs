@@ -20,6 +20,13 @@ public class Enemy : MonoBehaviour {
         transform.position = pos;
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Hit");
+        Destroy(col.gameObject);
+        Destroy(gameObject);
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
