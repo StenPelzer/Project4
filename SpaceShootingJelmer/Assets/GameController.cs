@@ -15,15 +15,14 @@ public class GameController : MonoBehaviour {
 
         data = player.GetComponent<Player>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown("space"))
         {
             Vector3 projectile_spawn = player.transform.position;
             projectile_spawn.y += 0.5f;
             Instantiate(projectile, projectile_spawn, Quaternion.identity);
-            Debug.Log(data.health);
         }
 
         if (Input.GetKeyDown("return"))
@@ -31,5 +30,6 @@ public class GameController : MonoBehaviour {
             Instantiate(enemy, new Vector3(0, 5, 0), Quaternion.identity);
         }
         data.Move();
+        
     }
 }
