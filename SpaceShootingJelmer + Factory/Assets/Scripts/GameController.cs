@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour {
     public EnemyFactory enemyFactory;
     public ProjectileFactory projectileFactory;
 
-    private int nextWaveTime = 1;
-    private int wavePeriod = 1;
+    private int nextWaveTime = 2;
+    private int wavePeriod = 2;
 
     Player data;
 

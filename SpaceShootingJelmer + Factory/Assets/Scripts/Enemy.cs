@@ -26,8 +26,10 @@ public class Enemy : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        ScoreScript.scoreValue += 1;
         this.health--;
         healthCheck();
+
     }
 
     void healthCheck()
