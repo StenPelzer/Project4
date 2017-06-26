@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShootingJelmer", "Assembly-CSharp.csproj", "{01450A4C-7591-3ED2-F6F6-44CCE77AE01D}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShootingJelmer", "SpaceShootingJelmer.csproj", "{4CC13167-E6F8-60EE-FC28-A7750CEE27C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{01450A4C-7591-3ED2-F6F6-44CCE77AE01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01450A4C-7591-3ED2-F6F6-44CCE77AE01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01450A4C-7591-3ED2-F6F6-44CCE77AE01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01450A4C-7591-3ED2-F6F6-44CCE77AE01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CC13167-E6F8-60EE-FC28-A7750CEE27C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CC13167-E6F8-60EE-FC28-A7750CEE27C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CC13167-E6F8-60EE-FC28-A7750CEE27C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CC13167-E6F8-60EE-FC28-A7750CEE27C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
