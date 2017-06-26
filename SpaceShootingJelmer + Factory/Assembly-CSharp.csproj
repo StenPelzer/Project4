@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Factories\PlayerFactory.cs" />
      <Compile Include="Assets\Scripts\Factories\ProjectileFactory.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Iterator.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
  <Reference Include="Facebook.Unity.Settings">
