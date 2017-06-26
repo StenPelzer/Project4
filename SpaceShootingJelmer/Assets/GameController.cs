@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
         player = Instantiate(player, new Vector3(0, -4, 0), Quaternion.identity);
 
         data = player.GetComponent<Player>();
-        int rng = Random.Range(0, 5);
+        int rng = Random.Range(1, 3);
         print(rng);
         for (int i = 0; i < rng; i++)
         {
