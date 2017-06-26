@@ -19,6 +19,13 @@ public class Projectile : MonoBehaviour {
         transform.position = pos;
 	}
 
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Destroy(gameObject);
+    }
+
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

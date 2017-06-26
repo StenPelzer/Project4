@@ -14,22 +14,28 @@ public class GameController : MonoBehaviour {
         player = Instantiate(player, new Vector3(0, -4, 0), Quaternion.identity);
 
         data = player.GetComponent<Player>();
+        int rng = Random.Range(0, 5);
+        print(rng);
+        for (int i = 0; i < rng; i++)
+        {
+            Instantiate(enemy, new Vector2(Random.Range(-5,5), 5), Quaternion.identity);
+            
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown("space"))
         {
             Vector3 projectile_spawn = player.transform.position;
             projectile_spawn.y += 0.5f;
             Instantiate(projectile, projectile_spawn, Quaternion.identity);
-            Debug.Log(data.health);
         }
 
-        if (Input.GetKeyDown("return"))
-        {
-            Instantiate(enemy, new Vector3(0, 5, 0), Quaternion.identity);
-        }
+
         data.Move();
+        
     }
 }
+
+
