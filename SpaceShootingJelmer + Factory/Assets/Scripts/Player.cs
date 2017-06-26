@@ -30,5 +30,19 @@ public class Player : MonoBehaviour {
         
         transform.position = pos;
     }
-    
+
+    void SelfDestruct()
+    {
+        Destroy(this);
+        Application.LoadLevel(0);
+        Debug.Log("The game has ended.");
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.name == "Enemy(Clone)")
+        {
+            this.SelfDestruct();
+        }
+    }
 }
