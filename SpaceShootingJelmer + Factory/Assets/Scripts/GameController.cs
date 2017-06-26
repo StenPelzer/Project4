@@ -12,14 +12,22 @@ public class GameController : MonoBehaviour {
     public EnemyFactory enemyFactory;
     public ProjectileFactory projectileFactory;
 
+    private int nextWaveTime = 1;
+    private int wavePeriod = 1;
+
     Player data;
 
     // Use this for initialization
     void Start () {
-
         player = playerFactory.Create(new Vector2(0, -4));
 
         data = player.GetComponent<Player>();
+
+        SpawnWave();
+    }
+
+    void SpawnWave()
+    {
         int rng = Random.Range(1, 3);
         for (int i = 0; i < rng; i++)
         {
@@ -36,9 +44,13 @@ public class GameController : MonoBehaviour {
             projectileFactory.Create(projectile_spawn);
         }
 
+        if(Time.time > nextWaveTime)
+        {
+            nextWaveTime += wavePeriod;
+            SpawnWave();
+        }
 
         data.Move();
-        
     }
 }
 
