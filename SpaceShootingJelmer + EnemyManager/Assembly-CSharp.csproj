@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C1384581-8593-D881-B293-435303D4AAF0}</ProjectGuid>
+    <ProjectGuid>{3089641D-BB6E-C54D-C22C-D8383A5F1341}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,8 +57,9 @@
      <Compile Include="Assets\Scripts\MainMenuButtons.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\ScoreScript.cs" />
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Users/Jelmer/Documents/GitHub/Project4/SpaceShootingJelmer + Factory/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>C:/Users/Jelmer/Documents/GitHub/Project4/SpaceShootingJelmer + EnemyManager/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
