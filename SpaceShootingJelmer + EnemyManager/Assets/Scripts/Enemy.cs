@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour {
     void Start()
     {
         this.health = 3;
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 3), Random.Range(0, 3), Random.Range(0, 3));
+        
     }
 
     // Update is called once per frame

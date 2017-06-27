@@ -14,7 +14,9 @@ public class Player : MonoBehaviour {
         Input.GetAxis("Horizontal");
 
         Vector3 pos = transform.position;
+        pos.x += Input.acceleration.x * maxSpeed * 2 * Time.deltaTime;
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime;
+        //Vector3 pos  = Input.acceleration.x
 
         float screenRatio = (float)Screen.width / (float)Screen.height;
         float widthOrtho = Camera.main.orthographicSize * screenRatio;

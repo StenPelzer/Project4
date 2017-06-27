@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 
-    private int nextWaveTime = 0;
-    private int wavePeriod = 1;
+    private double nextWaveTime = 0;
+    private double wavePeriod = 1;
 
     List<GameObject> list = new List<GameObject>();
 
@@ -19,7 +19,13 @@ public class EnemyManager : MonoBehaviour
             int rng = Random.Range(1, 3);
             for (int i = 0; i < rng; i++)
             {
-                list.Add(enemyFactory.Create(new Vector2(Random.Range(-5, 5), 5)));
+                //list.Add(enemyFactory.Create(new Vector2(Random.Range(-5, 5), 5))); //PC
+                list.Add(enemyFactory.Create(new Vector2(Random.Range(-2, 3), 5))); //Android
+            }
+            if (wavePeriod > 0.3)
+            {
+                wavePeriod -= 0.01;
+
             }
         }
     }

@@ -27,20 +27,32 @@ public class GameController : MonoBehaviour {
         enemyManager.SpawnWave(enemyFactory);
     }
 
-    
 
+    public bool timerOn = false;
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("space"))
-        {
-            Vector3 projectile_spawn = player.transform.position;
-            projectile_spawn.y += 0.5f;
-            projectileFactory.Create(projectile_spawn);
+
+            if (Input.GetKeyDown("space") || Input.touchCount > 0 && !timerOn)
+            {
+
+                Vector3 projectile_spawn = player.transform.position;
+                projectile_spawn.y += 0.5f;
+                projectileFactory.Create(projectile_spawn);
+            timerOn = true;
+            StartCoroutine(TapTimer());
+
+
         }
 
         enemyManager.SpawnWave(enemyFactory);
 
         data.Move();
+    }
+
+    IEnumerator TapTimer()
+    {
+        yield return new WaitForSeconds(0.05f);
+        timerOn = false;
     }
 }
 
