@@ -5,8 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public float maxSpeed = 20.5f;
-    public GameObject bullet;
     public int health = 3;
+    bool powerup = false;
+    float powerup_start;
+    float powerup_duration;
 
     public void Move()
     {
@@ -38,11 +40,31 @@ public class Player : MonoBehaviour {
         Debug.Log("The game has ended.");
     }
 
+    public void powerupCheck()
+    {
+        if (powerup)
+        {
+            if (Time.time >= powerup_start + powerup_duration)
+            {
+                powerup = false;
+                ScoreScript.scoreMultiplier = 1;
+            }
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.name == "Enemy(Clone)")
         {
             this.SelfDestruct();
+        }
+        if (other.gameObject.name == "Powerup(Clone)")
+        {
+            Destroy(other.gameObject);
+            powerup = true;
+            ScoreScript.scoreMultiplier = 200;
+            powerup_start = Time.time;
+            powerup_duration = 5;
         }
     }
 }
