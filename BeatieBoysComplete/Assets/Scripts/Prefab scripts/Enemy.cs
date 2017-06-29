@@ -6,8 +6,10 @@ public class Enemy : MonoBehaviour {
 
     public float speed;
     public int health;
-
-
+    public int dropchance = 15;
+    
+    public Powerup powerup;
+    public PowerupFactory powerupFactory;
 
     // Use this for initialization
     void Start()
@@ -26,17 +28,25 @@ public class Enemy : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        ScoreScript.Add();
-        this.health--;
-        healthCheck();
+        if(col.gameObject.name == "Projectile(Clone)")
+        {
+            ScoreScript.Add();
+            health--;
+            if(health == 0)
+            {
+                onDeath();
+            }
+        }
     }
 
-    public void healthCheck()
+    public void onDeath()
     {
-        if(this.health == 0)
+        int rng = Random.Range(1, 100);
+        if(rng < dropchance)
         {
-            Destroy(gameObject);
+            powerupFactory.Create(transform.position);
         }
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()

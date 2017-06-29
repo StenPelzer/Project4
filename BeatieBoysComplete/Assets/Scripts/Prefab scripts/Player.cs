@@ -62,7 +62,7 @@ public class Player : MonoBehaviour {
         {
             Destroy(other.gameObject);
             powerup = true;
-            ScoreScript.scoreMultiplier = 200;
+            ScoreScript.scoreMultiplier *= 20;
             powerup_start = Time.time;
             powerup_duration = 5;
         }
