@@ -10,8 +10,10 @@ public class GameOverScript : MonoBehaviour {
     // Use this for initialization
 
     void Start () {
+        GameObject yourScore = GameObject.Find("YourScoreText");
+        Text Score = yourScore.GetComponent<Text>();
 
-
+        Score.text = "Your score:\n" + ScoreScript.scoreValue;
     }
 
     public void Save()
@@ -19,6 +21,11 @@ public class GameOverScript : MonoBehaviour {
         GameObject nickGo = GameObject.Find("NicknameInput");
         InputField nickCo = nickGo.GetComponent<InputField>();
 
+        if(nickCo.text == "")
+        {
+            nickCo.text = "Anonymous";
+        }
+           
         ScoreToDatabase(ScoreScript.scoreValue, nickCo.text);
         Application.LoadLevel(0);
     }

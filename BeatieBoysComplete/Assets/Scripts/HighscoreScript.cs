@@ -17,6 +17,7 @@ public class HighscoreScript : MonoBehaviour {
 
     string GetHighscores()
     {
+        string scoreList = "";
         MySqlConnection connection;
         connection = new MySqlConnection();
         connection.ConnectionString = "server=185.13.227.163; userid=stenpbm145_beast; password=beast; database=stenpbm145_beastieboys";
@@ -32,19 +33,22 @@ public class HighscoreScript : MonoBehaviour {
 
         MySqlCommand command = connection.CreateCommand();
         command.CommandText = "SELECT * FROM `Highscore` ORDER BY Highscore DESC LIMIT 0,10;";
-        MySqlDataReader reader = command.ExecuteReader();
 
-        using (reader = command.ExecuteReader())
+        using (MySqlDataReader reader = command.ExecuteReader())
         {
-            if (reader.Read())
+            int i = 1;
+            while (reader.Read())
             {
-                Debug.Log(String.Format("{0}", reader["id"]));
+                scoreList += String.Format(i + ": {0} - {1}\n",reader["Nickname"], reader["Highscore"]);
+                i++;
             }
         }
 
+        Debug.Log(scoreList);
+
         connection.Close();
 
-        return reader[0].ToString();
+        return scoreList;
     }
 	
 	// Update is called once per frame
