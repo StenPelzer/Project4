@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-
-    public float speed;
-    public int health;
-
-
+public class Powerup : MonoBehaviour
+{
+    public float speed = 0.02f;
 
     // Use this for initialization
     void Start()
     {
-        this.health = 3;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
     }
 
@@ -23,22 +19,7 @@ public class Enemy : MonoBehaviour {
         pos.y -= speed;
         transform.position = pos;
     }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        ScoreScript.scoreValue += 1;
-        this.health--;
-        healthCheck();
-    }
-
-    public void healthCheck()
-    {
-        if(this.health == 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
+    
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

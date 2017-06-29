@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour {
 
         enemyManager.SpawnWave(enemyFactory);
 
+        data.powerupCheck();
+
         data.Move();
     }
 }

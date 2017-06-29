@@ -8,8 +8,6 @@ public class EnemyManager : MonoBehaviour
     private int nextWaveTime = 0;
     private int wavePeriod = 1;
 
-    List<GameObject> list = new List<GameObject>();
-
     public void SpawnWave(EnemyFactory enemyFactory)
     {
 
@@ -19,10 +17,8 @@ public class EnemyManager : MonoBehaviour
             int rng = Random.Range(1, 3);
             for (int i = 0; i < rng; i++)
             {
-                list.Add(enemyFactory.Create(new Vector2(Random.Range(-5, 5), 5)));
+                enemyFactory.Create(new Vector2(Random.Range(-5, 5), 5));
             }
         }
-    }
-
-    
+    } 
 }
