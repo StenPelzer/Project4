@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
 
     public float maxSpeed = 20.5f;
-    public int health = 3;
     bool powerup = false;
     float powerup_start;
     float powerup_duration;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
         transform.position = pos;
     }
 
-    void SelfDestruct()
+    public void SelfDestruct()
     {
         Destroy(this);
         Application.LoadLevel(2);

@@ -14,8 +14,9 @@ public class GameController : MonoBehaviour {
 
     public EnemyManager enemyManager;
 
-
     Player data;
+
+    public static int player_health = 3;
 
     // Use this for initialization
     void Start ()
@@ -23,13 +24,11 @@ public class GameController : MonoBehaviour {
         ScoreScript.scoreValue = 0;
 
         player = playerFactory.Create(new Vector2(0, -4));
-
+        player_health = 3;
         data = player.GetComponent<Player>();
 
         enemyManager.SpawnWave(enemyFactory);
     }
-
-    
 
     // Update is called once per frame
     void Update () {
@@ -38,6 +37,11 @@ public class GameController : MonoBehaviour {
             Vector3 projectile_spawn = player.transform.position;
             projectile_spawn.y += 0.5f;
             projectileFactory.Create(projectile_spawn);
+        }
+
+        if(player_health <= 0)
+        {
+            data.SelfDestruct();
         }
 
         enemyManager.SpawnWave(enemyFactory);
