@@ -22,6 +22,7 @@ public class MainMenuButtons : MonoBehaviour {
     }
     public void MainMenu()
     {
+        Application.UnloadLevel(1);
         Application.LoadLevel(0);
     }
 }
