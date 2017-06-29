@@ -10,6 +10,12 @@ public class MainMenuButtons : MonoBehaviour {
         Application.LoadLevel(1);
     }
 
+    public void Highscores()
+    {
+        Application.LoadLevel(3);
+        Debug.Log("Button highscores clicked");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
