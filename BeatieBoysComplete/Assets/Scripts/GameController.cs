@@ -7,12 +7,10 @@ public class GameController : MonoBehaviour {
     public GameObject player;
     public GameObject projectile;
     public GameObject enemy;
-    public GameObject powerup;
 
     public PlayerFactory playerFactory;
     public EnemyFactory enemyFactory;
     public ProjectileFactory projectileFactory;
-    public PowerupFactory powerupFactory;
 
     public EnemyManager enemyManager;
 
@@ -25,7 +23,6 @@ public class GameController : MonoBehaviour {
         ScoreScript.scoreValue = 0;
 
         player = playerFactory.Create(new Vector2(0, -4));
-        powerupFactory.Create(new Vector2(0, 0));
 
         data = player.GetComponent<Player>();
 
