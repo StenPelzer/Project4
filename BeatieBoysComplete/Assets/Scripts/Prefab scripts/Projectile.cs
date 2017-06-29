@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class Projectile : MonoBehaviour {
     {
         if(ScoreScript.scoreMultiplier > 1)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2));
         }
     }
 	
@@ -25,7 +26,10 @@ public class Projectile : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Destroy(gameObject);
+        if (col.gameObject.name == "Enemy(Clone)")
+        {
+            Destroy(gameObject);
+        }
     }
 
 
