@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\HighscoreScript.cs" />
      <Compile Include="Assets\Scripts\Iterator.cs" />
      <Compile Include="Assets\Scripts\MainMenuButtons.cs" />
+     <Compile Include="Assets\Scripts\MuteAudio.cs" />
      <Compile Include="Assets\Scripts\Prefab scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Prefab scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Prefab scripts\Powerup.cs" />

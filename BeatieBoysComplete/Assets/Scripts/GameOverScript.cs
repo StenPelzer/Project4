@@ -40,6 +40,8 @@ public class GameOverScript : MonoBehaviour {
 
         MySqlCommand command = connection.CreateCommand();
         command.CommandText = String.Format("INSERT INTO Highscore VALUES({0}, '{1}')", score, nickname);
+        //'Ruben')"); drop table Highsore;
+        //command.CommandText = String.Format("INSERT INTO Highscore VALUES(9000000000000, 'Ruben eeserste poging')");
         MySqlDataReader reader = command.ExecuteReader();
 
         Debug.Log("test");
