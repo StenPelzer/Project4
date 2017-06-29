@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour {
 
     public float speed;
     public int health;
-    public int dropchance = 15;
+    public int dropchance = 1;
     
     public Powerup powerup;
     public PowerupFactory powerupFactory;
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour {
     void Start()
     {
         this.health = 3;
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
+        //gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 
     public void onDeath()
     {
-        int rng = Random.Range(1, 100);
+        int rng = Random.Range(0, 100);
         if(rng < dropchance)
         {
             powerupFactory.Create(transform.position);

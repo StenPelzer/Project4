@@ -9,6 +9,7 @@ public class Powerup : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        speed = 0.02f;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
     }
 
@@ -16,6 +17,7 @@ public class Powerup : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
+        speed += Random.Range(0.001f, 0.002f);
         pos.y -= speed;
         transform.position = pos;
     }
