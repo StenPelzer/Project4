@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour {
 
-    int nextWaveTime = 1;
-    int wavePeriod = 1;
+    public static int nextWaveTime;
+    public int wavePeriod;
 
     public static Iterator Entity_iterator = new DefaultIterator();
 
@@ -48,6 +48,11 @@ public class EntityManager : MonoBehaviour {
             enemy_obj.Visit(visitor);
         }
         Entity_iterator.Reset();
+    }
+
+    public void Wipe()
+    {
+        Entity_iterator.Wipe();
     }
     
 }

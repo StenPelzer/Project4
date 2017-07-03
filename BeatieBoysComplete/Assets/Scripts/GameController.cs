@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 
     public EntityManager entityManager;
 
-    Player data;
+    Player player_data;
 
     public static int player_health = 3;
 
@@ -27,8 +27,8 @@ public class GameController : MonoBehaviour {
         EntityManager.Entity_iterator.Add(factory.Create("player", new Vector3(0, -4, 0)));
 
         player_health = 3;
-        data = player.GetComponent<Player>();
-
+        player_data = player.GetComponent<Player>();
+        
         entityManager.SpawnWave();
     }
 
@@ -38,14 +38,13 @@ public class GameController : MonoBehaviour {
 
         if(player_health <= 0)
         {
-            data.onDeath();
+            player_data.onDeath();
         }
         
         entityManager.SpawnWave();
         entityManager.Move();
-        
 
-        data.powerupCheck();
+        player_data.powerupCheck();
     }
 }
 
