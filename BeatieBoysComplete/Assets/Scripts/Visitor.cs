@@ -39,18 +39,13 @@ public class MoveVisitor : IEntityVisitor
 
         player.getTransform().Translate(new Vector3(Input.GetAxis("Horizontal") * player.getSpeed(), 0, 0) * Time.deltaTime);     
 
-        float screenRatio = (float)Screen.width / (float)Screen.height;
-        float widthOrtho = Camera.main.orthographicSize * screenRatio;
-
-        Vector3 pos = player.getTransform().position;
-
-        if (pos.x + 0.5f > widthOrtho)
+        if(player.getTransform().position.x < -2.2)
         {
-            pos.x = widthOrtho - 0.5f;
+            player.getTransform().Translate(new Vector3(-Input.GetAxis("Horizontal")*player.getSpeed(), 0, 0) * Time.deltaTime);
         }
-        if (pos.x - 0.5f < -widthOrtho)
+        else if(player.getTransform().position.x > 2.2)
         {
-            pos.x = -widthOrtho + 0.5f;
+            player.getTransform().Translate(new Vector3(-Input.GetAxis("Horizontal") * player.getSpeed(), 0, 0) * Time.deltaTime);
         }
         
         if (Input.GetKeyDown("space"))
