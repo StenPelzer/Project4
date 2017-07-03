@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: 7008a1e89618b9f4b8b5feb6af858d98
-timeCreated: 1498151627
+timeCreated: 1499088794
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: spaceship
     21300002: bullet
+    21300004: sheet_0
+    21300006: sheet_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -108,6 +110,32 @@ TextureImporter:
         y: 214
         width: 9
         height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sheet_0
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 476
+        width: 93
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sheet_1
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 532
+        width: 46
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
