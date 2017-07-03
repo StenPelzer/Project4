@@ -17,7 +17,7 @@ public class EntityManager : MonoBehaviour {
 
     public void SpawnWave()
     {
-        if (Time.time > nextWaveTime)
+        if (Time.timeSinceLevelLoad > nextWaveTime)
         {
             nextWaveTime += wavePeriod;
             int rng = Random.Range(1, 3);
