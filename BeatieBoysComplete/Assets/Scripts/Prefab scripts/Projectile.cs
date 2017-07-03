@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour, IEntity {
 
     public float speed;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         if(ScoreScript.scoreMultiplier > 1)
         {
@@ -17,24 +17,33 @@ public class Projectile : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        Vector3 pos = transform.position;
-        pos.y += speed;
-        transform.position = pos;
+	void Update ()
+    {
 	}
 
-
-    void OnCollisionEnter2D(Collision2D col)
+    public void Visit(IEntityVisitor visitor)
     {
-        if (col.gameObject.name == "Enemy(Clone)")
-        {
-            Destroy(gameObject);
-        }
+        visitor.onProjectile(this);
     }
 
-
-    private void OnBecameInvisible()
+    public Transform getTransform()
     {
-        Destroy(gameObject);
+        return this.gameObject.transform;
+    }
+
+    public int getHealth()
+    {
+        throw new NotImplementedException();
+    }
+
+    public float getSpeed()
+    {
+        return speed;
+    }
+
+    public void onDeath()
+    {
+        EntityManager.Entity_iterator.Remove(this);
+        Destroy(this.gameObject);
     }
 }

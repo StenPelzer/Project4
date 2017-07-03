@@ -5,50 +5,46 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject player;
-    public GameObject projectile;
     public GameObject enemy;
+    public GameObject projectile;
+    public GameObject powerup;
 
-    public PlayerFactory playerFactory;
-    public EnemyFactory enemyFactory;
-    public ProjectileFactory projectileFactory;
+    public static IFactory factory;
 
-    public EnemyManager enemyManager;
+    public EntityManager entityManager;
 
-    Player data;
+    Player player_data;
 
     public static int player_health = 3;
 
     // Use this for initialization
     void Start ()
     {
+        EntityManager.nextWaveTime = 0;
+        factory = new DefaultFactory(enemy, player, projectile, powerup);
+
         ScoreScript.scoreValue = 0;
 
-        player = playerFactory.Create(new Vector2(0, -4));
-        player_health = 3;
-        data = player.GetComponent<Player>();
+        EntityManager.Entity_iterator.Add(factory.Create("player", new Vector3(0, -4, 0)));
 
-        enemyManager.SpawnWave(enemyFactory);
+        player_health = 3;
+        player_data = player.GetComponent<Player>();
+        
+        entityManager.SpawnWave();
     }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("space"))
+
+        if (player_health <= 0)
         {
-            Vector3 projectile_spawn = player.transform.position;
-            projectile_spawn.y += 0.5f;
-            projectileFactory.Create(projectile_spawn);
+            player_data.onDeath();
         }
+        
+        entityManager.SpawnWave();
+        entityManager.Move();
 
-        if(player_health <= 0)
-        {
-            data.SelfDestruct();
-        }
-
-        enemyManager.SpawnWave(enemyFactory);
-
-        data.powerupCheck();
-
-        data.Move();
+        player_data.powerupCheck();
     }
 }
 
