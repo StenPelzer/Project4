@@ -44,15 +44,8 @@ public class HighscoreScript : MonoBehaviour {
             }
         }
 
-        Debug.Log(scoreList);
-
         connection.Close();
 
         return scoreList;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

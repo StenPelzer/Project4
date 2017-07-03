@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup : MonoBehaviour
+public class Powerup : MonoBehaviour, IEntity
 {
-    public float speed = 0.02f;
+    public float speed;
 
     // Use this for initialization
     void Start()
@@ -16,13 +16,31 @@ public class Powerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        pos.y -= speed;
-        transform.position = pos;
     }
-    
-    private void OnBecameInvisible()
+
+    public void Visit(IEntityVisitor visitor)
     {
-        Destroy(gameObject);
+        visitor.onPowerup(this);
+    }
+
+    public Transform getTransform()
+    {
+        return this.gameObject.transform;
+    }
+
+    public int getHealth()
+    {
+        throw new NotImplementedException();
+    }
+
+    public float getSpeed()
+    {
+        return speed;
+    }
+
+    public void onDeath()
+    {
+        EntityManager.Entity_iterator.Remove(this);
+        Destroy(this.gameObject);
     }
 }

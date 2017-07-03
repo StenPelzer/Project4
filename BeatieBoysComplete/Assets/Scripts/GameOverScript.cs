@@ -48,15 +48,7 @@ public class GameOverScript : MonoBehaviour {
         MySqlCommand command = connection.CreateCommand();
         command.CommandText = String.Format("INSERT INTO Highscore VALUES({0}, '{1}')", score, nickname);
         MySqlDataReader reader = command.ExecuteReader();
-
-        Debug.Log("test");
-
+        
         connection.Close();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

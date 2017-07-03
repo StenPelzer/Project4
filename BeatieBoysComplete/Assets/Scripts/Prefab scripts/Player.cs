@@ -3,39 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IEntity {
 
-    public float maxSpeed = 20.5f;
+    public float speed;
     bool powerup = false;
     float powerup_start;
     float powerup_duration;
 
-    public void Move()
+    public void onDeath()
     {
-        //returns a float from -1.0 to 1.0
-        Input.GetAxis("Horizontal");
-
-        Vector3 pos = transform.position;
-        pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime;
-
-        float screenRatio = (float)Screen.width / (float)Screen.height;
-        float widthOrtho = Camera.main.orthographicSize * screenRatio;
-
-        if (pos.x + 0.5f > widthOrtho)
-        {
-            pos.x = widthOrtho - 0.5f;
-        }
-        if (pos.x - 0.5f < -widthOrtho)
-        {
-            pos.x = -widthOrtho + 0.5f;
-        }
-        
-        transform.position = pos;
-    }
-
-    public void SelfDestruct()
-    {
-        Destroy(this);
+        EntityManager.Entity_iterator.Remove(this);
+        EntityManager.nextWaveTime = 0;
         Application.LoadLevel(2);
         Debug.Log("The game has ended.");
     }
@@ -56,15 +34,35 @@ public class Player : MonoBehaviour {
     {
         if(other.gameObject.name == "Enemy(Clone)")
         {
-            this.SelfDestruct();
+            this.onDeath();
         }
         if (other.gameObject.name == "Powerup(Clone)")
         {
-            Destroy(other.gameObject);
             powerup = true;
             ScoreScript.scoreMultiplier *= 20;
             powerup_start = Time.time;
             powerup_duration = 5;
+            other.GetComponent<Powerup>().onDeath();
         }
+    }
+
+    public void Visit(IEntityVisitor visitor)
+    {
+        visitor.onPlayer(this);
+    }
+
+    public Transform getTransform()
+    {
+        return this.gameObject.transform;
+    }
+
+    public int getHealth()
+    {
+        throw new NotImplementedException();
+    }
+    
+    public float getSpeed()
+    {
+        return speed;
     }
 }
