@@ -5,14 +5,13 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject player;
-    public GameObject projectile;
     public GameObject enemy;
+    public GameObject projectile;
+    public GameObject powerup;
 
-    public PlayerFactory playerFactory;
-    public EnemyFactory enemyFactory;
-    public ProjectileFactory projectileFactory;
+    public static IFactory factory;
 
-    public EnemyManager enemyManager;
+    public EntityManager entityManager;
 
     Player data;
 
@@ -21,34 +20,32 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        factory = new DefaultFactory(enemy, player, projectile, powerup);
+
         ScoreScript.scoreValue = 0;
 
-        player = playerFactory.Create(new Vector2(0, -4));
+        EntityManager.Entity_iterator.Add(factory.Create("player", new Vector3(0, -4, 0)));
+
         player_health = 3;
         data = player.GetComponent<Player>();
 
-        enemyManager.SpawnWave(enemyFactory);
+        entityManager.SpawnWave();
     }
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("space"))
-        {
-            Vector3 projectile_spawn = player.transform.position;
-            projectile_spawn.y += 0.5f;
-            projectileFactory.Create(projectile_spawn);
-        }
+        
 
         if(player_health <= 0)
         {
-            data.SelfDestruct();
+            data.onDeath();
         }
-
-        enemyManager.SpawnWave(enemyFactory);
+        
+        entityManager.SpawnWave();
+        entityManager.Move();
+        
 
         data.powerupCheck();
-
-        data.Move();
     }
 }
 
