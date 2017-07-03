@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour, IEntity {
     // Use this for initialization
     void Start()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2));
     }
 
     void OnTriggerEnter2D(Collider2D col)
