@@ -27,6 +27,7 @@ public class MoveVisitor : IEntityVisitor
         enemy.getTransform().Translate(new Vector3(0, -enemy.getSpeed(), 0) * Time.deltaTime);
         if (enemy.getTransform().position.y < -5.5)
         {
+            GameController.player_health--;
             enemy.onDeath();
         }
     }
@@ -67,8 +68,7 @@ public class MoveVisitor : IEntityVisitor
         {
             powerup.onDeath();
         }
-    
-        }
+    }
 
 public void onProjectile(IEntity projectile)
     {

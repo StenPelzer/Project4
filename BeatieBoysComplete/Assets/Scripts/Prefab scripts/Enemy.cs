@@ -15,13 +15,17 @@ public class Enemy : MonoBehaviour, IEntity {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2));
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Projectile(Clone)")
+        if (col.gameObject.name == "Projectile(Clone)")
         {
             ScoreScript.Add();
             health--;
             col.gameObject.GetComponent<Projectile>().onDeath();
+            if (health == 0)
+            {
+                onDeath();
+            }
         }
     }
 

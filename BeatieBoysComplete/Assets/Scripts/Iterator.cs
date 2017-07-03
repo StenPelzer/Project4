@@ -10,6 +10,7 @@ public interface Iterator
     IEntity GetNext();
     void Reset();
     void Remove(IEntity entity);
+    void Wipe();
 }
 
 public class DefaultIterator : Iterator
@@ -41,6 +42,14 @@ public class DefaultIterator : Iterator
     public void Remove(IEntity entity)
     {
         entities.Remove(entity);
+    }
+
+    public void Wipe()
+    {
+        foreach(IEntity e in entities)
+        {
+            e.onDeath();
+        }
     }
 }
 

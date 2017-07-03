@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IEntity {
     public void onDeath()
     {
         EntityManager.Entity_iterator.Remove(this);
-        Destroy(this);
+        EntityManager.nextWaveTime = 0;
         Application.LoadLevel(2);
         Debug.Log("The game has ended.");
     }
@@ -38,11 +38,11 @@ public class Player : MonoBehaviour, IEntity {
         }
         if (other.gameObject.name == "Powerup(Clone)")
         {
-            Destroy(other.gameObject);
             powerup = true;
             ScoreScript.scoreMultiplier *= 20;
             powerup_start = Time.time;
             powerup_duration = 5;
+            other.GetComponent<Powerup>().onDeath();
         }
     }
 
