@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        EntityManager.nextWaveTime = 0;
         factory = new DefaultFactory(enemy, player, projectile, powerup);
 
         ScoreScript.scoreValue = 0;
@@ -34,9 +35,8 @@ public class GameController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
 
-        if(player_health <= 0)
+        if (player_health <= 0)
         {
             player_data.onDeath();
         }
