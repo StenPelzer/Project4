@@ -23,7 +23,7 @@ public class EntityManager : MonoBehaviour {
             int rng = Random.Range(1, 3);
             for (int i = 0; i < rng; i++)
             {
-                Entity_iterator.Add(GameController.factory.Create("enemy", new Vector3(Random.Range(-5, 5), 5, 0)));
+                Entity_iterator.Add(GameController.factory.Create("enemy", new Vector3(Random.Range(-2, 3), 5, 0)));
             }
         }
     }
