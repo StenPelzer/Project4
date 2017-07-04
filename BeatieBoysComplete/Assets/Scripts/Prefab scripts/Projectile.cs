@@ -41,6 +41,16 @@ public class Projectile : MonoBehaviour, IEntity {
         return speed;
     }
 
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void setHealth(int health)
+    {
+       
+    }
+
     public void onDeath()
     {
         EntityManager.Entity_iterator.Remove(this);

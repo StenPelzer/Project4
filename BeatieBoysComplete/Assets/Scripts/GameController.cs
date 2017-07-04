@@ -17,6 +17,10 @@ public class GameController : MonoBehaviour {
 
     public static int player_health = 3;
 
+    public static bool instant_death = false;
+    public static bool enemy_boost = false;
+    public static bool enemy_buff = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -28,6 +32,10 @@ public class GameController : MonoBehaviour {
         EntityManager.Entity_iterator.Add(factory.Create("player", new Vector3(0, -4, 0)));
 
         player_health = 3;
+        if (GameController.instant_death)
+        {
+            player_health = 1;
+        }
         player_data = player.GetComponent<Player>();
         
         entityManager.SpawnWave();
