@@ -10,12 +10,17 @@ public class Player : MonoBehaviour, IEntity {
     float powerup_start;
     float powerup_duration;
 
+
     public void onDeath()
     {
         EntityManager.Entity_iterator.Remove(this);
         EntityManager.nextWaveTime = 0;
+        GameController.enemy_boost = false;
+        GameController.enemy_buff = false;
+        GameController.instant_death = false;
         Application.LoadLevel(2);
         Debug.Log("The game has ended.");
+        
     }
 
     public void powerupCheck()
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour, IEntity {
             powerup_start = Time.time;
             powerup_duration = 5;
             other.GetComponent<Powerup>().onDeath();
+
         }
     }
 
@@ -65,4 +71,15 @@ public class Player : MonoBehaviour, IEntity {
     {
         return speed;
     }
+
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void setHealth(int health)
+    {
+        GameController.player_health = health;
+    }
+
 }
