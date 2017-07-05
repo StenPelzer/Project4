@@ -24,4 +24,9 @@ public class MainMenuButtons : MonoBehaviour {
     {
         Application.LoadLevel(0);
     }
+
+    public void Settingsmenu()
+    {
+        Application.LoadLevel(4);
+    }
 }

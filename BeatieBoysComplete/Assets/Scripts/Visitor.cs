@@ -16,7 +16,9 @@ public interface IEntity
     void Visit(IEntityVisitor visitor);
     Transform getTransform();
     int getHealth();
+    void setHealth(int health);
     float getSpeed();
+    void setSpeed(float speed);
     void onDeath();
 }
 

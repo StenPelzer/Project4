@@ -6,12 +6,21 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IEntity {
 
     public float speed;
-    public int health;
+    public float health;
     public int dropchance = 15;
 
     // Use this for initialization
     void Start()
     {
+        if (GameController.enemy_boost)
+        {
+            speed *= 3.5f;
+        }
+
+        if (GameController.enemy_buff)
+        {
+            health *= 2;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -57,5 +66,15 @@ public class Enemy : MonoBehaviour, IEntity {
     public float getSpeed()
     {
         return speed;
+    }
+
+    public void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void setHealth(int health)
+    {
+        this.health = health;
     }
 }
