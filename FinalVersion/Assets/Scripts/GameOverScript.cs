@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour {
-
-    // Use this for initialization
+    
 
     void Start () {
+        //creates a text to display the score
         GameObject yourScore = GameObject.Find("YourScoreText");
         Text Score = yourScore.GetComponent<Text>();
 
@@ -17,6 +17,7 @@ public class GameOverScript : MonoBehaviour {
 
     public void Save()
     {
+        //gets the score and name, then calls the database input command
         GameObject nickGo = GameObject.Find("NicknameInput");
         InputField nickCo = nickGo.GetComponent<InputField>();
 
@@ -30,6 +31,7 @@ public class GameOverScript : MonoBehaviour {
 
     IEnumerator ScoreToDatabase(int score, string nickname)
     {
+        //puts the data into the database, then loads the highscore scene
         string webadress = "http://unrehearsed-rowboat.000webhostapp.com/addscore2.php?&score=" + score + "&name=" + WWW.EscapeURL(nickname);
         print(webadress);
         WWW website = new WWW(webadress);

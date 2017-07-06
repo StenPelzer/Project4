@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 
 public class HighscoreScript : MonoBehaviour {
-    string scoreList;
 
-    // Use this for initialization
+    string scoreList;
+    
     void Start ()
     {
+        //calls the command that gets scores
         StartCoroutine(GetScores());
     }
     
     IEnumerator GetScores()
     {
+        //gets the scores from the database and print them on the screen
         scoreList = "Loading..";
         SetField(scoreList);
         WWW hs_get = new WWW("http://unrehearsed-rowboat.000webhostapp.com/display.php");
@@ -35,6 +37,7 @@ public class HighscoreScript : MonoBehaviour {
 
     void SetField(string scoreList)
     {
+        //creates a place to keep the highscores
         GameObject highscores = GameObject.Find("Highscores");
         Text highscoresList = highscores.GetComponent<Text>();
         highscoresList.text = scoreList;

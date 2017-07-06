@@ -9,24 +9,25 @@ public class ScoreScript : MonoBehaviour {
     public static int scoreMultiplier = 1;
     Text score;
     Text lives;
-
-	// Use this for initialization
+    
 	void Start ()
     {
+        //sets the text on the screen for score and lives
         GameObject scoreText = GameObject.Find("ScoreText");
         GameObject livesText = GameObject.Find("LivesText");
         score = scoreText.GetComponent<Text>();
         lives = livesText.GetComponent<Text>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
+        //adds the score and health values to the screen
         score.text = "Score: " + scoreValue;
         lives.text = "Lives: " + GameController.player_health;
 	}
 
     public static void Add()
     {
+        //adds score
         scoreValue += 1 * scoreMultiplier;
     }
 }

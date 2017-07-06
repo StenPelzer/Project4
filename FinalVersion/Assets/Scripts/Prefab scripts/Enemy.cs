@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IEntity {
 
     void Start()
     {
+        //Checks on enemy spawn if there are other settings
         if (GameController.enemy_boost)
         {
             speed *= 2.0f;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour, IEntity {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        //Checks if the collision is with a projectile
         if (col.gameObject.name == "Projectile(Clone)")
         {
             ScoreScript.Add();
@@ -38,6 +40,7 @@ public class Enemy : MonoBehaviour, IEntity {
 
     public void onDeath()
     {
+        //Randomly generates a pickup and destroys the enemy on death
         int rng = UnityEngine.Random.Range(1, 100);
         if(rng < dropchance)
         {
@@ -49,31 +52,37 @@ public class Enemy : MonoBehaviour, IEntity {
 
     public Transform getTransform()
     {
+        //returns the transform
         return this.gameObject.transform;
     }
 
     public void Visit(IEntityVisitor visitor)
     {
+        //calls the visitor
         visitor.onEnemy(this);
     }
 
     public int getHealth()
     {
+        //returns the health
         throw new NotImplementedException();
     }
 
     public float getSpeed()
     {
+        //returns the speed
         return speed;
     }
 
     public void setSpeed(float speed)
     {
+        //sets the speed
         this.speed = speed;
     }
 
     public void setHealth(int health)
     {
+        //sets the health
         this.health = health;
     }
 }
