@@ -4,11 +4,13 @@ using UnityEngine;
 
 public interface IFactory
 {
+    //interface for the factory
     IEntity Create(string which, Vector3 position);
 }
 
 public class DefaultFactory : IFactory
 {
+    //variables to assign prefabs to
     GameObject enemy;
     GameObject player;
     GameObject projectile;
@@ -22,6 +24,7 @@ public class DefaultFactory : IFactory
         this.powerup = powerup;
     }
 
+    //Creates the objects and returns them
     public IEntity Create(string which, Vector3 position)
     {
         switch (which)
